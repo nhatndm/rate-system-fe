@@ -15,7 +15,7 @@ function App() {
 
   useEffect(() => {
     async function fetchQuestions() {
-      const response = await axios.get("http://188.166.247.65:3000/questions")
+      const response = await axios.get("https://api-rate-system.sinme.xyz/questions")
       
       setQuestions(response.data)
 
@@ -36,7 +36,7 @@ function App() {
   const handleClickPoint = useCallback(async (i) => {
     setPoint(i)
     
-    const response = await axios.post("http://188.166.247.65:3000/rates/add_point", {
+    const response = await axios.post("https://api-rate-system.sinme.xyz/rates/add_point", {
         point: i
       }, {
         headers: {
@@ -67,7 +67,7 @@ function App() {
       return alert("Your feedback can not be empty!")
     }
 
-    await axios.put(`http://188.166.247.65:3000/rates/${pointResponse}`, {
+    await axios.put(`https://api-rate-system.sinme.xyz/rates/${pointResponse}`, {
         email,
       }, {
         headers: {
@@ -76,7 +76,7 @@ function App() {
       }
     )
 
-    await axios.post("http://188.166.247.65:3000/answers", {
+    await axios.post("https://api-rate-system.sinme.xyz/answers", {
         email,
         questions: answers
       }, {
